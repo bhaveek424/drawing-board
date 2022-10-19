@@ -28,6 +28,12 @@ function App() {
 
     clearCanvas(canvas);
   }, []);
+
+  // Canvas Events
+  const startDrawing = () => {};
+  const endDrawing = () => {};
+  const draw = () => {};
+
   return (
     <div className="window">
       <div className="title-bar">
@@ -36,7 +42,13 @@ function App() {
           <button aria-label="Close" />
         </div>
       </div>
-      <canvas ref={canvasRef} />
+      <canvas
+        onMouseDown={startDrawing}
+        onMouseUp={endDrawing}
+        onMouseOut={endDrawing}
+        onMouseMove={draw}
+        ref={canvasRef}
+      />
     </div>
   );
 }
