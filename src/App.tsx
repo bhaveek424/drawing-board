@@ -1,8 +1,8 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import "./App.css";
 import { clearCanvas, setCanvasSize } from "./utils/canvasUtils";
 import React, { useRef, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "./utils/types";
+import { beginStroke, endStroke, updateStroke } from "./actions";
 
 const WIDTH = 1024;
 const HEIGHT = 768;
@@ -29,10 +29,33 @@ function App() {
     clearCanvas(canvas);
   }, []);
 
+  const isDrawing = useSelector<RootState>(
+    (state) => !!state.currentStroke.points.length
+  );
+
+  const dispatch = useDispatch();
+
   // Canvas Events
-  const startDrawing = () => {};
-  const endDrawing = () => {};
-  const draw = () => {};
+  const startDrawing = ({
+    nativeEvent,
+  }: React.MouseEvent<HTMLCanvasElement>) => {
+    const { offsetX, offsetY } = nativeEvent;
+
+    dispatch(beginStroke(offsetX, offsetY));
+  };
+  const endDrawing = () => {
+    if (isDrawing) {
+      dispatch(endStroke());
+    }
+  };
+  const draw = ({ nativeEvent }: React.MouseEvent<HTMLCanvasElement>) => {
+    if (!isDrawing) {
+      return;
+    }
+    const { offsetX, offsetY } = nativeEvent;
+
+    dispatch(updateStroke(offsetX, offsetY));
+  };
 
   return (
     <div className="window">
