@@ -51,3 +51,5 @@ export const rootReducer = (
       return state;
   }
 };
+
+export const currentStrokeSelector = (state: RootState) => state.currentStroke;
