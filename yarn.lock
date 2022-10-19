@@ -833,3 +833,8 @@ vite@^3.1.0:
     rollup "~2.78.0"
   optionalDependencies:
     fsevents "~2.3.2"
+
+xp.css@^0.2.5:
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/xp.css/-/xp.css-0.2.5.tgz#d5a3bc61a0b8119cc0047b3c77023df49ac026d2"
+  integrity sha512-zVjz6ucI/S5BwWEL8ZD4SjoVJYbXykQCIUi2Nq4LdMh2k+eDZfdE5WYpvL2spqqSVMPv1jKad1IafXcMEYbVBg==
