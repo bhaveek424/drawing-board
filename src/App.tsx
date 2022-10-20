@@ -3,8 +3,13 @@ import React, { useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "./utils/types";
 import { beginStroke, endStroke, updateStroke } from "./actions";
-import { currentStrokeSelector } from "./rootReducer";
+import {
+  currentStrokeSelector,
+  historyIndexSelector,
+  strokesSelector,
+} from "./rootReducer";
 import { ColorPanel } from "./shared/ColorPanel";
+import { EditPanel } from "./shared/EditPanel";
 
 const WIDTH = 1024;
 const HEIGHT = 768;
@@ -68,6 +73,23 @@ function App() {
     dispatch(updateStroke(offsetX, offsetY));
   };
 
+  const historyIndex = useSelector(historyIndexSelector);
+  const strokes = useSelector(strokesSelector);
+
+  useEffect(() => {
+    const { canvas, context } = getCanvasWithContext();
+    if (!context || !canvas) {
+      return;
+    }
+    requestAnimationFrame(() => {
+      clearCanvas(canvas);
+
+      strokes.slice(0, strokes.length - historyIndex).forEach((stroke) => {
+        drawStroke(context, stroke.points, stroke.color);
+      });
+    });
+  }, [historyIndex]);
+
   return (
     <div className="window">
       <div className="title-bar">
@@ -76,6 +98,7 @@ function App() {
           <button aria-label="Close" />
         </div>
       </div>
+      <EditPanel />
       <ColorPanel />
       <canvas
         onMouseDown={startDrawing}
