@@ -4,8 +4,8 @@ import { redo, undo } from "../modules/historyIndex/actions";
 import { strokesLengthSelector } from "../modules/strokes/reducer";
 
 export const EditPanel = () => {
-  const dispatch = useDispatch();
   const undoLimit = useSelector(strokesLengthSelector);
+  const dispatch = useDispatch();
 
   return (
     <div className="window edit">
