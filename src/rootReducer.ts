@@ -69,25 +69,11 @@ export const rootReducer = (
       };
     }
 
-    case UNDO: {
-      const historyIndex = Math.min(
-        state.historyIndex + 1,
-        state.strokes.length
-      );
-      return { ...state, historyIndex };
-    }
-
-    case REDO: {
-      const historyIndex = Math.max(state.historyIndex - 1, 0);
-      return { ...state, historyIndex };
-    }
     default:
       return state;
   }
 };
 
 export const currentStrokeSelector = (state: RootState) => state.currentStroke;
-
-export const historyIndexSelector = (state: RootState) => state.historyIndex;
 
 export const strokesSelector = (state: RootState) => state.strokes;
