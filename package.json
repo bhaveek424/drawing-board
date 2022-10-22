@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.8.6",
     "@types/file-saver": "^2.0.5",
     "@types/react-redux": "^7.1.24",
     "@types/redux-logger": "^3.0.9",
@@ -16,7 +17,6 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.4",
-    "redux": "^4.2.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-logger": "^3.0.6",
     "xp.css": "^0.2.5"

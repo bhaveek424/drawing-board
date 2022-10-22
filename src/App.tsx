@@ -12,6 +12,7 @@ import { historyIndexSelector } from "./modules/historyIndex/reducer";
 import { ColorPanel } from "./shared/ColorPanel";
 import { EditPanel } from "./shared/EditPanel";
 import { useCanvas } from "./CanvasContext";
+import { FilePanel } from "./shared/FilePanel";
 
 const WIDTH = 1024;
 const HEIGHT = 768;
@@ -102,6 +103,7 @@ function App() {
       </div>
       <EditPanel />
       <ColorPanel />
+      <FilePanel />
       <canvas
         onMouseDown={startDrawing}
         onMouseUp={endDrawing}

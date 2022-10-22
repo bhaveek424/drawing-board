@@ -39,3 +39,17 @@ export const setCanvasSize = (
 
   canvas.getContext("2d")?.scale(2, 2);
 };
+
+{
+  /* This function resolves with canvas contenets transformed into a Blob. Later we'll be able to save this Blob as a file*/
+}
+export const getCanvasImage = (
+  canvas: HTMLCanvasElement | null
+): Promise<null | Blob> => {
+  return new Promise((resolve, reject) => {
+    if (!canvas) {
+      return reject(null);
+    }
+    canvas.toBlob(resolve);
+  });
+};

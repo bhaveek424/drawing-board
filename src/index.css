@@ -2,7 +2,7 @@
 
 canvas {
   transform: translate3d(-50%, 0, 0);
-  cursor: url(./icons/pencil.png) 0, 34, auto;
+  cursor: url(./assets/pencil.png) 0, 34, auto;
   margin: 100px 50%;
 }
 
@@ -33,5 +33,12 @@ canvas {
   position: fixed;
   bottom: 40px;
   left: 10%;
+  z-index: 10;
+}
+
+.file {
+  position: fixed;
+  bottom: 40px;
+  right: 20%;
   z-index: 10;
 }
