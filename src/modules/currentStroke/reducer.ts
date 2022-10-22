@@ -1,39 +1,29 @@
 import { RootState } from "../../utils/types";
+import { createReducer } from "@reduxjs/toolkit";
 import { endStroke } from "../sharedActions";
-import { Action, beginStroke, setStrokeColor, updateStroke } from "./actions";
+import { beginStroke, setStrokeColor, updateStroke } from "./actions";
 
 const initialState: RootState["currentStroke"] = {
   points: [],
   color: "#000",
 };
 
-export const reducer = (
-  state: RootState["currentStroke"] = initialState,
-  action: Action
-) => {
-  switch (action.type) {
-    case beginStroke.toString(): {
-      return { ...state, points: [action.payload] };
-    }
-    case updateStroke.toString(): {
-      return {
-        ...state,
-        points: [...state.points, action.payload],
-      };
-    }
-    case setStrokeColor.toString(): {
-      return {
-        ...state,
-        color: action.payload,
-      };
-    }
-    case endStroke.toString(): {
-      return {
-        ...state,
-        points: [],
-      };
-    }
-  }
-};
+export const reducer = createReducer(initialState, (builder) => {
+  builder.addCase(beginStroke, (state, action) => {
+    state.points = [action.payload];
+  });
+
+  builder.addCase(updateStroke, (state, action) => {
+    state.points.push(action.payload);
+  });
+
+  builder.addCase(setStrokeColor, (state, action) => {
+    state.color = action.payload;
+  });
+
+  builder.addCase(endStroke, (state) => {
+    state.points = [];
+  });
+});
 
 export const currentStrokeSelector = (state: RootState) => state.currentStroke;
