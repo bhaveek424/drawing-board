@@ -1,26 +1,10 @@
+import { AnyAction, createAction } from "@reduxjs/toolkit";
 import { Stroke } from "../../utils/types";
 
-export const UNDO = "UNDO";
-export const REDO = "REDO";
-export const END_STROKE = "END_STROKE";
+export type Action =
+  | AnyAction
+  | ReturnType<typeof undo>
+  | ReturnType<typeof redo>;
 
-export type HistoryIndexAction =
-  | {
-      type: typeof UNDO;
-      payload: number;
-    }
-  | {
-      type: typeof REDO;
-    }
-  | {
-      type: typeof END_STROKE;
-      payload: { stroke: Stroke; historyIndex: number };
-    };
-
-export const undo = (undoLimit: number) => {
-  return { type: UNDO, payload: undoLimit };
-};
-
-export const redo = () => {
-  return { type: REDO };
-};
+export const undo = createAction<number>("UNDO");
+export const redo = createAction("REDO");
