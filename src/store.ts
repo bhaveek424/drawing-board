@@ -2,7 +2,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import { applyMiddleware, createStore, combineReducers } from "redux";
 import { logger } from "redux-logger";
-import { reducer as historyIndex } from "./modules/historyIndex/reducer";
+import historyIndex from "./modules/historyIndex/slice";
 import { reducer as currentStroke } from "./modules/currentStroke/reducer";
 import { reducer as strokes } from "./modules/strokes/reducer";
 
