@@ -1,11 +1,11 @@
 import { clearCanvas, drawStroke, setCanvasSize } from "./utils/canvasUtils";
 import React, { useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { beginStroke, updateStroke } from "./modules/currentStroke/actions";
+import { beginStroke, updateStroke } from "./modules/currentStroke/slice";
 import { endStroke } from "./modules/sharedActions";
-import { strokesSelector } from "./modules/strokes/reducer";
-import { currentStrokeSelector } from "./modules/currentStroke/reducer";
-import { historyIndexSelector } from "./modules/historyIndex/reducer";
+import { strokesSelector } from "./modules/strokes/slice";
+import { currentStrokeSelector } from "./modules/currentStroke/slice";
+import { historyIndexSelector } from "./modules/historyIndex/slice";
 import { ColorPanel } from "./shared/ColorPanel";
 import { EditPanel } from "./shared/EditPanel";
 import { useCanvas } from "./CanvasContext";

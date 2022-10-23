@@ -1,11 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../utils/types";
 import { endStroke } from "../sharedActions";
-import { Action, redo, undo } from "./actions";
 
-const initialState: RootState["historyIndex"] = 0;
-
-export const reducer = createSlice({
+export const historyIndex = createSlice({
   name: "historyIndex",
   initialState: 0,
   reducers: {
@@ -23,4 +20,6 @@ export const reducer = createSlice({
   },
 });
 
+export default historyIndex.reducer;
+export const { undo, redo } = historyIndex.actions;
 export const historyIndexSelector = (state: RootState) => state.historyIndex;

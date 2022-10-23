@@ -3,8 +3,8 @@ import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import { applyMiddleware, createStore, combineReducers } from "redux";
 import { logger } from "redux-logger";
 import historyIndex from "./modules/historyIndex/slice";
-import { reducer as currentStroke } from "./modules/currentStroke/reducer";
-import { reducer as strokes } from "./modules/strokes/reducer";
+import { currentStroke } from "./modules/currentStroke/slice";
+import strokes from "./modules/strokes/slice";
 
 export const store = configureStore({
   reducer: {
