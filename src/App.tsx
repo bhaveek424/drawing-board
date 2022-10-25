@@ -10,6 +10,7 @@ import { ColorPanel } from "./shared/ColorPanel";
 import { EditPanel } from "./shared/EditPanel";
 import { useCanvas } from "./CanvasContext";
 import { FilePanel } from "./shared/FilePanel";
+import { ModalLayer } from "./ModalLayer";
 
 const WIDTH = 1024;
 const HEIGHT = 768;
@@ -101,6 +102,7 @@ function App() {
       <EditPanel />
       <ColorPanel />
       <FilePanel />
+      <ModalLayer />
       <canvas
         onMouseDown={startDrawing}
         onMouseUp={endDrawing}
