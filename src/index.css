@@ -2,7 +2,7 @@
 
 canvas {
   transform: translate3d(-50%, 0, 0);
-  cursor: url(./assets/pencil.png) 0, 34, auto;
+  cursor: url(./assets/pencil.png) 0 34, auto;
   margin: 100px 50%;
 }
 
